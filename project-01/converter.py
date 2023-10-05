@@ -3,8 +3,6 @@ alphabet = "".join(
                                      for el in range(ord("A"), ord("Z") + 1)]
 )
 
-PRECISION = 10
-
 
 def decI(num: str, from_base: int):
     num = num[::-1]
@@ -35,11 +33,11 @@ def convI(num: str, from_base: int, new_base: int):
     return "".join(res[::-1])
 
 
-def convF(num: str, from_base: int, new_base: int):
+def convF(num: str, from_base: int, new_base: int, precision: int = 10):
     res: list[str] = []
     num = decF(num, from_base)
     _ = new_base
-    for _ in range(PRECISION):
+    for _ in range(precision):
         tmp = num * new_base
         num = tmp - int(tmp)
         res.append(alphabet[int(tmp)])
