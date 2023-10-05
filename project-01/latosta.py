@@ -1,6 +1,5 @@
 # La tosta
-alphebet = [*map(str, range(10))] + [chr(el)
-                                     for el in range(ord("A"), ord("Z") + 1)]
+alphebet = [*map(str, range(10))] + [chr(el) for el in range(ord("A"), ord("Z") + 1)]
 print("".join(alphebet)[:16])
 
 n = "ABCDES"
