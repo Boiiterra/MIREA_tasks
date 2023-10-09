@@ -4,16 +4,30 @@ alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #                                      for el in range(ord("A"), ord("Z") + 1)]
 # )
 
+# Все переводы осуществляются с использованием машинного перевода
+# и перевод в любую другой из другой СС осущетвляется через десятичную
+#
+# 4 3 2 1 0 -1 -2
+# 1 1 0 0 0. 1  1 <- число
+#
+# 1 * 2**3 + 1 * 2**4 + 1 * 2**-1 + 1 * 2**-2
+#
+# И так далее :3
+# !!! Все числа при переводе не в 10-ричную имеют 10 знаков после запятой -> precision
+
 
 def dec(num: str, from_base: int):
+    """Перевод в десятичную СС из другой"""
     return decI(num, from_base) + decF(num, from_base)
 
 
 def conv(num: str, from_base: int, new_base: int):
+    """Перевод числа в любую другую СС из любой другой СС"""
     return convI(num, from_base, new_base) + convF(num, from_base, new_base)
 
 
 def decI(num: str, from_base: int):
+    """Переводим целую часть с отрезанием минуса и дробной части"""
     m = -1 if (num[0] == "-") else 1
     num = num.replace(",", ".").split(".")[0]
     if m < 0:
@@ -28,6 +42,7 @@ def decI(num: str, from_base: int):
 
 
 def decF(num: str, from_base: int):
+    """Переводим дробную часть с отрезанием целой части"""
     num = num.replace(",", ".").split(".")[1]
     r = 0.0
 
@@ -38,6 +53,7 @@ def decF(num: str, from_base: int):
 
 
 def convI(num: str, from_base: int, new_base: int):
+    """Переводим целую часть с отрезанием минуса и дробной части"""
     m = "-" if (num[0] == "-") else ""
     if m:
         num = num[1:]
@@ -53,6 +69,7 @@ def convI(num: str, from_base: int, new_base: int):
 
 
 def convF(num: str, from_base: int, new_base: int, precision: int = 10):
+    """Переводим дробную часть с отрезанием минуса и целой части"""
     res: list[str] = []
     num = decF(num, from_base)
     for _ in range(precision):

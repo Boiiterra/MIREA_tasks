@@ -3,6 +3,7 @@ from math import cos, sin
 
 
 def knormal(num: str):
+    """Добавить нолик если нету :) 1 -> 1.0"""
     num = num.replace(",", ".")
     if "." in num:
         return num
@@ -54,6 +55,7 @@ def cosine(a, rss):
 
 
 def kraise(a, b, rss):
+    """Степень"""  # Отчаяния
     c = a**b
     if c < 0:
         return "-" + conv(knormal(str(-c)), 10, rss)
@@ -61,6 +63,7 @@ def kraise(a, b, rss):
 
 
 def root(a, b, rss):
+    """Корень"""  # Зла
     if b == 0:
         return None
     c = a ** (1 / b)
