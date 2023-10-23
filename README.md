@@ -1,4 +1,4 @@
-# MIREA_tasks
+# MIREA tasks
 
 Code that I wrote for some tasks in uni MIREA.
 
